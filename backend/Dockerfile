@@ -5,4 +5,4 @@ RUN apk add nodejs-current
 COPY . .
 RUN npm ci
 ENTRYPOINT ["npm", "start"]
-EXPOSE 8080
+EXPOSE 3000
