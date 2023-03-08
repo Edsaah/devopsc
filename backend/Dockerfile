@@ -3,6 +3,6 @@ WORKDIR /app
 RUN apk add nodejs npm
 RUN apk add nodejs-current
 COPY . .
-ENTRYPOINT ["npm ci", "npm start"]
-# CMD node /frontend/scr/index.js
+RUN npm ci
+ENTRYPOINT ["npm", "start"]
 EXPOSE 8080
