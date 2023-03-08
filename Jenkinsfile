@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build docker build ./frontend -t frontend:latest'
-                sh 'docker build docker build ./backend -t backend:latest'
+                sh 'docker build ./frontend -t frontend:latest'
+                sh 'docker build ./backend -t backend:latest'
             }
         }
         stage('Deploy') {
