@@ -1,16 +1,19 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Build & Push to ECR') {
             steps {
-                sh 'docker build ./frontend -t frontend:latest'
-                sh 'docker build ./backend -t backend:latest'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'ls -al'
+                    script{
+                        docker.withRegistry('https://328006718464.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:aws-cred') {
+                            def app = docker.build("frontend", "-f frontend/Dockerfile .")
+                            app.push("${env.BUILD_NUMBER}")
+                            app.push("latest")
+                            app = docker.build("backend", "-f backend/Dockerfile .")
+                            app.push("${env.BUILD_NUMBER}")
+                            app.push("latest")
+                        }
+                    }
+                }
             }
         }
     }
-}
