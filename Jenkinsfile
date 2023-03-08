@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:7'
-            registryUrl 'ecr_url.amazonaws.com'
-            registryCredentialsId 'ecr:us-east-1:iam_role'
-        }
-    }
+    agent any
     stages {
         stage('Build') {
             steps {
