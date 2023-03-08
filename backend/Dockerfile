@@ -1,5 +1,5 @@
 # Frontend Dockerfile
-FROM node:14
+FROM node:lts-alpine3.17
 COPY . /app
 WORKDIR /app/backend
 RUN npm install
