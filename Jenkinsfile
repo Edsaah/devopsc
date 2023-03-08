@@ -9,7 +9,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ls -l'
+                sh 'docker build docker build ./frontend -t frontend:latest'
+                sh 'docker build docker build ./backend -t backend:latest'
             }
         }
     }
