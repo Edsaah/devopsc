@@ -1,7 +1,8 @@
-FROM node:12-alpine3.14
-WORKDIR /app
-RUN apk add nodejs npm
-RUN apk add nodejs-current
-COPY . .
-ENTRYPOINT ["npm", "ci", "&&", "npm", "start"]
+# Frontend Dockerfile
+FROM node:14
+COPY . /app
+WORKDIR /app/backend
+RUN npm install
+RUN npm run build
 EXPOSE 8080
+CMD ["npm", "start"]
