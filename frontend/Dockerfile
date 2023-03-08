@@ -3,5 +3,6 @@ WORKDIR /app
 RUN apk add nodejs npm
 RUN apk add nodejs-current
 COPY . .
-ENTRYPOINT ["npm ci", "npm start"]
+RUN npm ci
+ENTRYPOINT ["npm", "start"]
 EXPOSE 3000
