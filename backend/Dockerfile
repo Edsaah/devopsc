@@ -3,5 +3,5 @@ WORKDIR /app
 RUN apk add nodejs npm
 RUN apk add nodejs-current
 COPY . .
-ENTRYPOINT ["pwd", "&&" ,"ls", "-al", "&&" ,"npm", "ci", "&&", "npm", "start"]
+ENTRYPOINT ["npm", "ci", "&&", "npm", "start"]
 EXPOSE 8080
